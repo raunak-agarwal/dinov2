@@ -5,13 +5,13 @@ ibot:
   separate_head: true
   head_n_prototypes: 131072
 train:
-  batch_size_per_gpu: 400
+  batch_size_per_gpu: 300
   dataset_path: RecursiveImageDataset:root=~/.datasets
   centering: sinkhorn_knopp
 student:
   arch: vit_small
-  patch_size: 32
-  drop_path_rate: 0.4
+  patch_size: 14
+  drop_path_rate: 0 # Usually 0.4. Set it to 0 because ViT-S crashes at higher values.
   ffn_layer: swiglufused
   block_chunks: 4
 teacher:
