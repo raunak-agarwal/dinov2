@@ -95,7 +95,8 @@ class FSDPCheckpointer(Checkpointer):
             return
 
         data = {}
-        with FSDP.state_dict_type(self.model, StateDictType.LOCAL_STATE_DICT):
+        # with FSDP.state_dict_type(self.model, StateDictType.LOCAL_STATE_DICT): # Use this in case of multi-node.
+        with FSDP.state_dict_type(self.model, StateDictType.FULL_STATE_DICT): # In case of single node, use FULL_STATE_DICT. 
             data["model"] = self.model.state_dict()
 
         # data["model"] = self.model.state_dict()
