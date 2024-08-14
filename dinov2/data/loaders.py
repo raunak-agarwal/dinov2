@@ -52,7 +52,7 @@ def _parse_dataset_str(dataset_str: str):
         assert key in ("root", "extra", "split")
         kwargs[key] = value
 
-    if name == "Recursive":
+    if name == "RecursiveImageDataset":
         class_ = RecursiveImageDataset
     elif name == "ImageNet":
         class_ = ImageNet
