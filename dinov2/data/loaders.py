@@ -10,7 +10,7 @@ from typing import Any, Callable, List, Optional, TypeVar
 import torch
 from torch.utils.data import Sampler
 
-from .datasets import ImageNet, ImageNet22k
+from .datasets import ImageNet, ImageNet22k, RecursiveImageDataset
 from .samplers import EpochSampler, InfiniteSampler, ShardedInfiniteSampler
 
 
@@ -52,7 +52,9 @@ def _parse_dataset_str(dataset_str: str):
         assert key in ("root", "extra", "split")
         kwargs[key] = value
 
-    if name == "ImageNet":
+    if name == "Recursive":
+        class_ = RecursiveImageDataset
+    elif name == "ImageNet":
         class_ = ImageNet
         if "split" in kwargs:
             kwargs["split"] = ImageNet.Split[kwargs["split"]]

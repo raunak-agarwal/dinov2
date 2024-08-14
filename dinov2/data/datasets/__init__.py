@@ -5,3 +5,4 @@
 
 from .image_net import ImageNet
 from .image_net_22k import ImageNet22k
+from .recursive_image_dataset import RecursiveImageDataset
