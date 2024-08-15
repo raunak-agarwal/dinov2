@@ -11,7 +11,7 @@ train:
 student:
   arch: vit_small
   patch_size: 14
-  drop_path_rate: 0.2 # Usually 0.4. Set it to 0 because ViT-S crashes at higher values.
+  drop_path_rate: 0 # Usually 0.4. Set it to 0 because ViT-S crashes at higher values.
   ffn_layer: swiglufused
   block_chunks: 4
 teacher:
