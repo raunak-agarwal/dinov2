@@ -157,9 +157,9 @@ def do_train(cfg, model, resume=False):
 
     periodic_checkpointer = PeriodicCheckpointer(
         checkpointer,
-        period=25 * OFFICIAL_EPOCH_LENGTH,
+        period=10 * OFFICIAL_EPOCH_LENGTH,
         max_iter=max_iter,
-        max_to_keep=20,
+        max_to_keep=10,
     )
 
     # setup data preprocessing
