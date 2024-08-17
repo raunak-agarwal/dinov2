@@ -159,7 +159,7 @@ def do_train(cfg, model, resume=False):
         checkpointer,
         period=10 * OFFICIAL_EPOCH_LENGTH,
         max_iter=max_iter,
-        max_to_keep=10,
+        max_to_keep=2,
     )
 
     # setup data preprocessing
