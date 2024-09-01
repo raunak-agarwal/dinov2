@@ -5,15 +5,15 @@ ibot:
   separate_head: true
   head_n_prototypes: 131072
 train:
-  batch_size_per_gpu: 192
+  batch_size_per_gpu: 135
   dataset_path: RecursiveImageDataset:root=/workspace/datasets/data/dino_train_images_flat
   centering: sinkhorn_knopp
-  num_workers: 64
-  OFFICIAL_EPOCH_LENGTH: 1100
+  num_workers: 96
+  OFFICIAL_EPOCH_LENGTH: 775
 student:
-  arch: vit_base
+  arch: vit_large
   patch_size: 14
-  drop_path_rate: 0.1 # Usually 0.4
+  drop_path_rate: 0.4 # Usually 0.4
   ffn_layer: swiglufused
   block_chunks: 4
 teacher:
@@ -27,4 +27,4 @@ optim:
 crops:
   local_crops_size: 84
 evaluation:
-  eval_period_iterations: 21000
+  eval_period_iterations: 15500
