@@ -5,15 +5,15 @@ ibot:
   separate_head: true
   head_n_prototypes: 131072
 train:
-  batch_size_per_gpu: 200
+  batch_size_per_gpu: 100
   dataset_path: RecursiveImageDataset:root=~/.datasets
   centering: sinkhorn_knopp
   num_workers: 64
-  OFFICIAL_EPOCH_LENGTH: 525
+  OFFICIAL_EPOCH_LENGTH: 1050
 student:
-  arch: vit_base
+  arch: vit_large
   patch_size: 14
-  drop_path_rate: 0.1 # Usually 0.4
+  drop_path_rate: 0.4 # Usually 0.4
   ffn_layer: swiglufused
   block_chunks: 4
 teacher:
@@ -27,4 +27,4 @@ optim:
 crops:
   local_crops_size: 84
 evaluation:
-  eval_period_iterations: 10000
+  eval_period_iterations: 21000
