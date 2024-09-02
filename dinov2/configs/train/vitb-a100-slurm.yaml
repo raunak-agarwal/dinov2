@@ -27,4 +27,4 @@ optim:
 crops:
   local_crops_size: 98
 evaluation:
-  eval_period_iterations: 27500
+  eval_period_iterations: 2750
