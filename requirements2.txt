@@ -1,0 +1,11 @@
+torch
+torchvision
+omegaconf
+torchmetrics
+fvcore
+iopath
+xformers
+submitit
+--extra-index-url https://pypi.nvidia.com
+cuml-cu12
+fastai
