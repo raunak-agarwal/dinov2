@@ -42,10 +42,13 @@ class MaybeToTensor(transforms.ToTensor):
 IMAGENET_DEFAULT_MEAN = (0.485, 0.456, 0.406)
 IMAGENET_DEFAULT_STD = (0.229, 0.224, 0.225)
 
+CXR_MEAN = (0.4958348274, 0.4958348274, 0.4958348274)
+CXR_STD = (0.2771022319, 0.2771022319, 0.2771022319)
+
 
 def make_normalize_transform(
-    mean: Sequence[float] = IMAGENET_DEFAULT_MEAN,
-    std: Sequence[float] = IMAGENET_DEFAULT_STD,
+    mean: Sequence[float] = CXR_MEAN,
+    std: Sequence[float] = CXR_STD,
 ) -> transforms.Normalize:
     return transforms.Normalize(mean=mean, std=std)
 
@@ -57,12 +60,12 @@ def make_classification_train_transform(
     crop_size: int = 224,
     interpolation=transforms.InterpolationMode.BICUBIC,
     hflip_prob: float = 0.5,
-    mean: Sequence[float] = IMAGENET_DEFAULT_MEAN,
-    std: Sequence[float] = IMAGENET_DEFAULT_STD,
+    mean: Sequence[float] = CXR_MEAN,
+    std: Sequence[float] = CXR_STD,
 ):
     transforms_list = [transforms.RandomResizedCrop(crop_size, interpolation=interpolation)]
-    if hflip_prob > 0.0:
-        transforms_list.append(transforms.RandomHorizontalFlip(hflip_prob))
+    # if hflip_prob > 0.0:
+    #     transforms_list.append(transforms.RandomHorizontalFlip(hflip_prob))
     transforms_list.extend(
         [
             MaybeToTensor(),
@@ -79,8 +82,8 @@ def make_classification_eval_transform(
     resize_size: int = 256,
     interpolation=transforms.InterpolationMode.BICUBIC,
     crop_size: int = 224,
-    mean: Sequence[float] = IMAGENET_DEFAULT_MEAN,
-    std: Sequence[float] = IMAGENET_DEFAULT_STD,
+    mean: Sequence[float] = CXR_MEAN,
+    std: Sequence[float] = CXR_STD,
 ) -> transforms.Compose:
     transforms_list = [
         transforms.Resize(resize_size, interpolation=interpolation),
