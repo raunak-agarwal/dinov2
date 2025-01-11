@@ -1,0 +1,30 @@
+dino:
+  head_n_prototypes: 65536
+  head_bottleneck_dim: 256
+ibot:
+  separate_head: true
+  head_n_prototypes: 65536
+train:
+  batch_size_per_gpu: 200
+  dataset_path: RecursiveImageDataset:root=/workspace/datasets/data/dino_train_images_flat
+  centering: sinkhorn_knopp
+  num_workers: 64
+  OFFICIAL_EPOCH_LENGTH: 1050
+student:
+  arch: vit_base
+  patch_size: 16
+  drop_path_rate: 0.1 # Usually 0.4
+  ffn_layer: mlp
+  block_chunks: 4
+teacher:
+  momentum_teacher: 0.994
+optim:
+  epochs: 100
+  weight_decay_end: 0.2
+  base_lr: 2.0e-04  # learning rate for a batch size of 1024. Autoscaling is applied for smaller batches sizes in dinov2/utils/config.py
+  warmup_epochs: 20
+  layerwise_decay: 1.0
+crops:
+  local_crops_size: 96
+evaluation:
+  eval_period_iterations: 10500
