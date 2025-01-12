@@ -1,12 +1,10 @@
---extra-index-url https://download.pytorch.org/whl/cu124
-torch==2.5.1 
-torchvision
+--extra-index-url https://download.pytorch.org/whl/cu117
+torch==2.0.1
+torchvision==0.15.2
 omegaconf
 torchmetrics
 fvcore
 iopath
-xformers
+xformers==0.0.22
 submitit
---extra-index-url https://pypi.nvidia.com
-cuml-cu12
 fastai

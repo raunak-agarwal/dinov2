@@ -9,7 +9,7 @@ train:
   dataset_path: RecursiveImageDataset:root=/workspace/datasets/data/dino_train_images_flat
   centering: sinkhorn_knopp
   num_workers: 64
-  OFFICIAL_EPOCH_LENGTH: 1050
+  OFFICIAL_EPOCH_LENGTH: 1000
 student:
   arch: vit_base
   patch_size: 16
@@ -27,4 +27,4 @@ optim:
 crops:
   local_crops_size: 96
 evaluation:
-  eval_period_iterations: 10500
+  eval_period_iterations: 10000
